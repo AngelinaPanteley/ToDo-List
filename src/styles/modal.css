@@ -1,0 +1,116 @@
+.ReactModal__Overlay {
+    opacity: 0;
+    transition: opacity 300ms ease;
+    background: rgba(0, 0, 0, 0.15);
+}
+  
+.ReactModal__Overlay--after-open {
+    opacity: 1;
+}
+
+.ReactModal__Content {
+    opacity: 0;
+    margin-top: -50px;
+    transition: opacity 500ms ease, margin-top 500ms ease;
+    width: 600px;
+    background: #fff;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    outline: none;
+}
+
+.ReactModal__Content--after-open {
+    opacity: 1;
+    margin-top: 0;
+}
+
+.modal__header {
+    font-size: 15px;
+    color: #fff;
+    background: #0ba895;
+    height: 30px;
+    line-height: 30px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px 5px 0 0;
+    padding: 0 11px;
+}
+
+.modal__form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 11px;
+    color: #215c58;
+}
+
+.modal__input {
+    border-radius: 4px;
+    height: 30px;
+    line-height: 30px;
+    border: 2px solid #0ba895;
+    margin-top: 5px;
+    outline: none;
+    margin-bottom: 20px;
+    padding: 0 10px;
+}
+
+.modal__textarea {
+    border-radius: 4px;
+    height: 130px;
+    line-height: 15px;
+    border: 2px solid #0ba895;
+    margin-top: 5px;
+    outline: none;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.modal__input:focus,
+.modal__textarea:focus {
+    border-color: #215c58;
+}
+
+.modal__buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.modal__buttons button,
+.modal__buttons input {
+    border-radius: 4px;
+    height: 30px;
+    line-height: 30px;
+    border: 2px solid #0ba895;
+    margin-left: 10px;
+    text-align: center;
+    padding: 0 20px;
+    cursor: pointer;
+    background: #fff;
+    color: #215c58;
+}
+
+.modal__buttons button:hover {
+    border-color: #215c58;
+}
+
+.modal__buttons input {
+    background: #0ba895;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.modal__buttons input:hover {
+    background: #215c58;
+    border-color: #215c58;
+}
+
+.modal__error {
+    color: red;
+    position: absolute;
+    font-size: 18px;
+    bottom: 25px;
+    left: 11px;
+}

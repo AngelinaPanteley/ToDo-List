@@ -1,31 +1,36 @@
 import React from 'react'
-import { render } from 'react-dom'
-import { createStore } from 'redux'
+import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import App from './components/App'
-import reducer from './data/reducer'
-import { Route, Switch } from 'react-router-dom'
-import { BrowserRouter } from 'react-router-dom'
+import { createStore, applyMiddleware, compose } from 'redux'
+import { createLogger } from 'redux-logger'
 
+import App from './containers/App'
+import reducers from './reducers'
+import Modal from 'react-modal'
+import registerServiceWorker from './registerServiceWorker'
 import './styles/index.css'
-import './styles/index.css'
 
-export const initialState = {
-  categories: {  categoryList: [], progress: 0 },
-  tasks: {taskList: []},
-  filters: {showDone: false, search: ""}
-}
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+const store = composeEnhancers(
+  applyMiddleware(createLogger())
+)(createStore)(reducers)
 
-export const store = createStore(
-  reducer, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-
-render(
+ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
-      <Switch>
-        <Route path="/" component={Dashboard} />
-      </Switch>
-    </BrowserRouter>
+    <App />
   </Provider>,
   document.getElementById('root')
-)
+);
+
+registerServiceWorker()
+
+Modal.defaultStyles = {
+  overlay : {
+    position          : 'fixed',
+    top               : 0,
+    left              : 0,
+    right             : 0,
+    bottom            : 0,
+    backgroundColor   : 'rgba(0,0,0,0.3)'
+  },
+}
